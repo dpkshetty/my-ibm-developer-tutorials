@@ -239,8 +239,8 @@ My login ID is **dpkshetty**.
    ![image](https://github.com/user-attachments/assets/bc176c08-b7d6-455f-901c-9dac2c2e8e4f)
 
 1. Click the **git-clone** task in the pipeline, and on the properties pane, scroll down to the Workspaces section. From the **output** drop-down list, select **my-workspace** . With this, we have completed the first (git-clone) task.
-
    
+   ![image](https://github.com/user-attachments/assets/eaef6fb8-7f4b-44d3-b974-e1722d7e48f4)
 
 <div id="sec4b"></div>
 
@@ -248,19 +248,19 @@ My login ID is **dpkshetty**.
 
 1. Now, let’s create the next task, s2i-python, which helps to build the source code into a Docker image and push it to the quay.io registry. Go back to the pipeline builder view, hover the mouse pointer over the git-clone task, and click the **“+”** sign to the right of the git-clone task to add a new task.
 
-   ![Figure 29](images/img29.png)
-   ![Figure 30](images/img30.png)
+   ![image](https://github.com/user-attachments/assets/d90e73fc-45c1-43cd-a9ad-b6865cadee7c)
+   ![image](https://github.com/user-attachments/assets/fd713814-13e0-4b8b-9f37-c4c1b74be709)
 
 1. You can see a new **Select Task** drop-down list created. From this list, select the **s2i-python** task.
 
    **Note**: In this example, we are selecting the s2i-python task because the application code in the GitHub repository is written in Python language.
 
-   ![Figure 31](images/img31.png)
-   ![Figure 32](images/img32.png)
+   ![image](https://github.com/user-attachments/assets/c3ce5ad2-9f13-48f9-8fcf-f95b015f165c)
+   ![image](https://github.com/user-attachments/assets/7d044761-64ce-47ed-a58d-0b5efe467124)
 
 1. Notice that a new **s2i-python** task is created, and is placed after the **git-clone** task.
 
-   ![Figure 33](images/img33.png)
+   ![image](https://github.com/user-attachments/assets/df87dc95-51b7-4f9d-8613-ab877076d4d4)
 
 1. Click the **s2i-python** task, and in the properties pane that is displayed on the right side, and enter the following values for the available fields:
 
@@ -272,20 +272,20 @@ My login ID is **dpkshetty**.
 
    Retain the default values for the remaining fields.
 
-   ![Figure 34](images/img34.png)
+   ![image](https://github.com/user-attachments/assets/71a95225-b4c4-40fa-9b69-07dccc314e4c)
 
 1. Click **Create** in the pipeline builder view to create the pipeline with the git-clone and s2i-python tasks.
 
-   ![Figure 35](images/img35.png)
+   ![image](https://github.com/user-attachments/assets/fe3a5de4-8609-45d0-aa21-4e71afc571af)
 
    The pipeline details page is displayed.
 
-   ![Figure 36](images/img36.png)
+   ![image](https://github.com/user-attachments/assets/0991ec1b-7f49-4015-8224-6d67290297e3)
 
 1. In case you missed to enter data for any of the fields or wish to edit them, click **Actions -> Edit Pipeline**. On the Pipeline builder page, select the task you wish to edit and update its properties. After completing the updates, click **Save** to confirm the changes made.
 
-   ![Figure 37](images/img37.png)
-   ![Figure 38](images/img38.png)
+   ![image](https://github.com/user-attachments/assets/4e500199-2fe0-490d-a57e-7d6d9416945d)
+   ![image](https://github.com/user-attachments/assets/0699acf9-4668-405d-945c-ef74ae599060)
 
 <div id="sec5"></div>
 
@@ -293,35 +293,35 @@ My login ID is **dpkshetty**.
 
 1. On the Pipeline details page, click **Actions -> Start**.
 
-   ![Figure 39](images/img39.png)
+   ![image](https://github.com/user-attachments/assets/98bbb870-bfda-4182-b599-1832703de555)
 
 1. On the Start Pipeline page, specify the following values:
 
    * In the my-workspace field, select **VolumeClaimTemplate**, which automatically creates a PersistentVolumeClaim (PVC) of 1 GiB and provision storage for our workspace area.
    * In the **Advanced options** section, expand **Show Credential options**.
 
-     ![Figure 40](images/fignew40.png)  
+     ![image](https://github.com/user-attachments/assets/9c8925bb-9384-4eb4-832a-33747e9ff8d7)
    * We need to provide the quay.io credentials for the PipelineRun job to be able to access our quay.io account and push the Docker image. The credentials are provided as part of a OpenShift secret. To add the secret, click **Add Secret**.
 
-     ![Figure 41](images/img41.png)  
+     ![image](https://github.com/user-attachments/assets/699a78c6-106f-4e78-9457-6d4394ea1903)
    * Enter a name for the secret (**quay-demos** in my case), and in the **Server URL** and **Registry server address** fields, enter **quay.io**.
 
      Retain the default values for the remaining fields.
 
-     ![Figure 42](images/img42.png)  
+     ![image](https://github.com/user-attachments/assets/8b49ffc2-8ff5-4584-955b-f1800b560ba0)
    * Navigate to your quay.io robot account (created in the ‘[Create a new quay.io repository to publish Docker image](#sec3)’ step above) page, click the robot account (**dpkshetty+demos** in my case) and copy the username and password from the quay.io page to the Username and Password fields in the OpenShift console respectively. Click the tick mark symbol to save the secret.
 
-     ![Figure 43](images/img43.png)
-     ![Figure 44](images/img44.JPG)
-     ![Figure 45](images/img45.png)
+     ![image](https://github.com/user-attachments/assets/d99dfed7-b868-4d97-bbf2-17949e29def3)
+     ![image](https://github.com/user-attachments/assets/b2604eac-bf3a-47d3-bc24-216cc46c16ae)
+     ![image](https://github.com/user-attachments/assets/2b3c1cb0-fd10-4404-bd6b-83c35a457ba3)
 
      Notice that the newly secret appears on the Start Pipeline page.
 
-     ![Figure 46](images/img46.png)
+     ![image](https://github.com/user-attachments/assets/2310c392-9224-489e-aeec-77607b4ef697)
 
 1. Ideally at this point, you would click **Start** to run the pipeline. But at the time of writing this tutorial, OpenShift 4.8.x has a small bug in the secret creation process. The secret is malformed and needs to be corrected before we can start running the pipeline. So for now, click **Cancel** (no worries the secret created stays) and return back to the Pipelines page.
 
-   ![Figure 47](images/img47.png)
+   ![image](https://github.com/user-attachments/assets/c7a79813-93a1-448d-a4b0-ddf7b0bcbc0d)
 
 <div id="sec5a"></div>
 
@@ -331,23 +331,23 @@ My login ID is **dpkshetty**.
 
 1. Click the **Secrets** tab.
 
-   ![Figure 48](images/img48.png)  
+   ![image](https://github.com/user-attachments/assets/2c60b5d9-6e81-49d0-95dd-ec587e9b9709) 
 1. Search for your secret (**quay-demos** in my case).
 
-   ![Figure 49](images/img49.png)  
+   ![image](https://github.com/user-attachments/assets/80b0a695-5a9e-4c0a-ac4b-8551d3d33009) 
 1. For your secret entry, click **Edit Secret**.
 
-   ![Figure 50](images/img50.png)  
+   ![image](https://github.com/user-attachments/assets/3ed3d66f-16a7-4355-bb59-37cd6c0c093c)
 1. Notice that there are multiple redundant and malformed entries in the secret file (that’s the bug). All entries (except the last entry) have the **Username** and **Password** fields empty and the **Registry server address** field incomplete (first entry has q, second entry has qu, and so on).
 
-   ![Figure 51](images/img51.png)
-   ![Figure 52](images/img52.png)  
+   ![image](https://github.com/user-attachments/assets/e6b5fed8-d07f-4899-9dff-8d3fe056c540)
+   ![image](https://github.com/user-attachments/assets/ba4ce8b5-b84d-497c-9596-7f595a7861f9)
 1. In this example, only the last entry (scroll down to the end of the page) is valid, and the rest all are invalid. Click **Remove credentials** for all incorrect entries.
 
-   ![Figure 53](images/img53.png)  
+   ![image](https://github.com/user-attachments/assets/ff9082f3-5e1e-439a-bb6b-c875c4bdc184)
 1. Notice that there should be only one valid entry with all the fields populated as shown in the following screen capture. Click **Save**.
 
-   ![Figure 54](images/img54.png)
+   ![image](https://github.com/user-attachments/assets/bdbc6401-3908-4f3b-9c79-5613f2ecf276)
 
 <div id="sec5b"></div>
 
@@ -355,46 +355,45 @@ My login ID is **dpkshetty**.
 
 1. Click the **Pipelines** tab to view the Pipelines page.
 
-   ![Figure 55](images/img55.png)  
+   ![image](https://github.com/user-attachments/assets/ff2d663c-8402-45f9-8cc5-1e4c13ba113c)
 1. Click the three vertical dots option next to the pipeline and click **Start**.
 
-   ![Figure 56](images/img56.png)  
+   ![image](https://github.com/user-attachments/assets/4fd1a7fc-78fd-4834-aa53-9ee4ce5a6d0d)
 1. From the my-workspace drop-down list, select **VolumeClaimTemplate** and click **Show Credential options**. Ensure that the previously created secret (**quay-demos** in my case) exists. Click **Start** to run the pipeline.
 
-   ![Figure 57](images/img57.png)  
+   ![image](https://github.com/user-attachments/assets/b0b383bd-a349-4957-9f0b-6cc1a516a022) 
 1. On the PipelineRun details page, notice that the first task (**git-clone**) has started.
 
-   ![Figure 58](images/img58.png)  
+   ![image](https://github.com/user-attachments/assets/8af024ce-ecef-437c-a6d9-de024420dce3)
 1. On the Logs page, view the logs for each step being executed as part of the PipelineRun job.
 
-   ![Figure 59](images/fignew59.jpg)  
-   <a href="images/fignew59.png" target="_blank" rel="noopener noreferrer">View larger image</a>  
+   ![image](https://github.com/user-attachments/assets/5aefa1a9-04f0-4898-a6e0-d8e99c86a9d6)
+   
 1. Wait for both the tasks to complete. After successful completion, notice that the status of PipelineRun is **Succeeded**.
 
-   ![Figure 60](images/fignew60.jpg)  
-   <a href="images/fignew60.jpg" target="_blank" rel="noopener noreferrer">View larger image</a>   
+   ![image](https://github.com/user-attachments/assets/603ee81b-8107-410a-b50d-f0d6c6fbd5a6) 
+   
 1. For each task, OpenShift creates a new pod and runs the task steps inside the pod. Click the **TaskRuns** tab to view the task runs associated with this PipelineRun, and the pods associated with each task.
 
-   ![Figure 61](images/img61.png)  
-   <a href="images/img61.png" target="_blank" rel="noopener noreferrer">View larger image</a>
-
+   ![image](https://github.com/user-attachments/assets/4f7de858-43a9-4ee8-a3d0-6c23929c010e)  
+   
 <div id="sec6"></div>
 
 ### 6.	Verify Docker image creation in quay.io
 
 1. Navigate to quay.io and click **Repositories**.
 
-   ![Figure 62](images/img62.png)  
+   ![image](https://github.com/user-attachments/assets/3fc8666d-5957-4f22-9bd4-b0c45b979d29)  
 1. Click the repository name (**dpkshetty/demos** in my case).
 
-   ![Figure 63](images/img63.png)  
+   ![image](https://github.com/user-attachments/assets/799d8a16-825a-4a59-948b-771586c8ec90) 
 1. Click the **Tags** icon.
 
-   ![Figure 64](images/img64.png)
+   ![image](https://github.com/user-attachments/assets/be08999c-9cee-41b0-9b59-002ca807dce8)
 
 1. Notice that a new Docker image with tag, **latest** is created few minutes ago. We entered this tag in the s2i-python task’s properties for the Image field (See section, [Create a simple pipeline to build and publish a Docker image from the GitHub source code](#sec4)).
 
-   ![Figure 65](images/img65.png)
+   ![image](https://github.com/user-attachments/assets/a3eaa912-66cc-4d3a-a21b-27d06b943e40)
 
 **Congratulations!** You have successfully created a Docker image in quay.io from the GitHub source code using OpenShift Pipelines.
 
@@ -404,55 +403,55 @@ My login ID is **dpkshetty**.
 
 1. To create a new application or pod in OpenShift using this newly created Docker image, navigate to your OpenShift console, click **+Add** and then click **Container Images**.
 
-   ![Figure 66](images/img66.png)
+   ![image](https://github.com/user-attachments/assets/d9f91bcf-e91e-4b59-9519-515a3dd73159)
 
 1. On the Deploy Image page, enter the required values in the following field:
 
    * **Image name from external registry**: Your quay.io Docker image URL (**quay.io/dpkshetty/demos:latest** in my case). After entering, press the Tab key and wait for OpenShift to validate the URL. You should see the **Validated** message below the URL which ensures OpenShift is able to view and access the Docker image URL.
 
-     ![Figure 67](images/img67.png)
+     ![image](https://github.com/user-attachments/assets/23556087-4b99-4157-9d25-41457825c4ff)
 
 1. In the General section, enter **demos-app** in the **Application Name** field, and **demos** in the **Name** field.
 1. In the Resources section, select **Deployment** as the resource type to generate, and in the Advanced options section, select the **Create a route to Application** checkbox.
 
-     ![Figure 68](images/img68.png)  
+     ![image](https://github.com/user-attachments/assets/0b620e44-53ae-45ee-ad2b-b7a0f623e3b4) 
 1. Optionally, specify the options for a secure route (refer to the following note for details).
 
    **Note**: The steps to add a secure route can be skipped if you are using an OpenShift cluster where HTTP routes are allowed. In my case, OpenShift on IBM Power Virtual Server mandates to use HTTPS (secure HTTP) routes and plain HTTP routes **are not supported**. Hence, I need to perform the following steps. If unsure, Check with your cluster administrator for further details.
 
    * Expand **Show advanced Routing options**.
 
-     ![Figure 69](images/img69.png)
+     ![image](https://github.com/user-attachments/assets/317d068d-d52b-4181-bf2a-16b1b114458c)
 
    * Select the **Secure Route** checkbox.
 
-     ![Figure 70](images/img70.png)  
+     ![image](https://github.com/user-attachments/assets/b9a2cec1-38be-487d-b1c8-161582303ce2)  
    * From the **TLS Termination** drop-down list, select **Edge**, and from the **Insecure traffic** drop-down list, select **None**.
 
-      ![Figure 71](images/img71.png)
+      ![image](https://github.com/user-attachments/assets/7512f65b-d45d-4807-8372-896017f46365)
 
 1. Click **Create**.
 
-   ![Figure 72](images/img72.png)
+   ![image](https://github.com/user-attachments/assets/205d02fe-9e7a-47ca-893f-5dd7ea2f9810)
 
 1. On the Topology view, you can see an icon for your application being deployed. Click the deployment (**D demos**) and in the corresponding properties pane, click the **Resources** tab and wait for pod to be in **Running** state.
 
-   ![Figure 73](images/img73.png)
+   ![image](https://github.com/user-attachments/assets/375b8374-e3e8-4dd2-ae0c-94099ccbc855)
 
 1. In the Routes section, click the location URL.
 
    **Note**: *Depending on how your OpenShift cluster is configured, you may have a HTTPS or HTTP route (as explained earlier)*.
 
-   ![Figure 74](images/img74.png)
+   ![image](https://github.com/user-attachments/assets/ef64ef78-1f3d-4133-963a-3559cb7d7014)
 
 1. After successful completion, notice the welcome message from the Pyflask app in your browser window.
 
-   ![Figure 75](images/img75.png)
+   ![image](https://github.com/user-attachments/assets/2ee6355a-83b4-4c89-9053-ed7d99cd761f)
 
 1. Also, check the other endpoints (such as **/test** and **/version** by appending it to the end of the URL) to validate if the entire application is working as expected.
 
-   ![Figure 76](images/img76.png)
-   ![Figure 77](images/img77.png)
+   ![image](https://github.com/user-attachments/assets/063d66fd-dc9e-45da-b983-87fa5ab96593)
+   ![image](https://github.com/user-attachments/assets/ef650923-4b7b-469a-8710-b80647ac8d47)
 
 **Congratulations!** The Docker image you have created using OpenShift Pipelines is working successfully. You can now share your quay.io Docker image URL (**‘quay.io/dpkshetty/demos:latest’** in my case) with anyone in the world to create or run applications from your Docker image.
 
@@ -472,21 +471,21 @@ Triggers automate this process by capturing and processing any change event and 
 
 1. In the Pipelines view click the three vertical dots icon next to the pipeline, and click **Add Trigger**.
 
-   ![Figure 78](images/img78.png)
-   ![Figure 79](images/img79.png)  
+   ![image](https://github.com/user-attachments/assets/4f94ad64-81dd-4ac3-a091-e2fb288644bd)
+   ![image](https://github.com/user-attachments/assets/5a82d142-a6c1-476b-8b64-5c4e026f5116) 
 1. On the Add Trigger page, enter the values for the following fields:
    * From the **Git Provider type** drop-down list, select **github-push**.
    * From the **my-workspace** drop-down list, select **VolumeClaimTemplate**.
 
    Then click **Add**.
 
-   ![Figure 80](images/img80.png)  
+   ![image](https://github.com/user-attachments/assets/2966ebff-cba7-4299-8dec-43b0e92a51f1)  
 1. On the Pipelines page, click the pipeline.
 
-   ![Figure 81](images/img81.png)  
+   ![image](https://github.com/user-attachments/assets/bf7c36c2-89ad-47ee-b6ec-32d386e470f6)  
 1. On the Pipeline details page, you can see that the event listener HTTP route URL has been created. Event listener is a component of pipelines trigger that listens to the external events.
 
-   ![Figure 82](images/img82.png)  
+   ![image](https://github.com/user-attachments/assets/1fd93651-ef48-4e39-b8c6-403177432186)  
 1. Copy the HTTP URL (applicable only if your OpenShift cluster supports HTTP routes, and if not, navigate to the **Create a event listener HTTPS route** section and copy the HTTPS URL) and save it for later use. This URL (HTTP or HTTPS as applicable) will be used as a payload URL in GitHub webhooks setup (you can find details in the subsequent topics).
 
 <div id='sec8b'></div>
@@ -497,7 +496,7 @@ Triggers automate this process by capturing and processing any change event and 
 
 1. Switch to **Administrator** persona, and click **Networking -> Routes**. On the Routes page, you can see a route entry, named **el-event-listener-xxx**, representing the event listener object, the associated HTTP route URL, and the corresponding event listener service object to which this route maps to.
 
-   ![Figure 83](images/img83.png)  
+   ![image](https://github.com/user-attachments/assets/3be8cde8-4827-4d7b-bcee-9ac82f30bdea)  
 1. Click **Create Route** and enter the required values for the following fields:
 
    * In the **Name** field, enter **my-https-route** (or any name as you wish).
@@ -507,13 +506,13 @@ Triggers automate this process by capturing and processing any change event and 
 
      Retain the default values for the remaining fields, scroll down, and click **Create**.
 
-     ![Figure 84](images/img84.png)
-     ![Figure 85](images/img85.png)
-     ![Figure 86](images/img86.png)
+     ![image](https://github.com/user-attachments/assets/33eaf38c-8c65-4a76-81f6-50fdf27396bc)
+     ![image](https://github.com/user-attachments/assets/719974a3-7b52-42c4-8dfa-aadf45b13682)
+     ![image](https://github.com/user-attachments/assets/83e56df7-8efc-4bdf-b3fe-00ec0876737c)
 
 1. Notice that a new route has been created with the HTTPS route URL.
 
-     ![Figure 87](images/img87.png)  
+     ![image](https://github.com/user-attachments/assets/65e053a4-b52f-4964-b1c9-61b42e12eaed)  
 1. Save this HTTPS URL for later use.
 
 <div id='sec8c'></div>
@@ -524,13 +523,13 @@ GitHub webhooks allow external services to be notified when certain GitHub event
 
 1. Navigate to your GitHub repo in browser (<a href="https://github.com/dpkshetty/pipeline-s2i-pyflask-demo" target="_blank" rel="noopener noreferrer">https://github.com/dpkshetty/pipeline-s2i-pyflask-demo</a> in my case, and your URL will be different).
 
-   ![Figure 88](images/img88.png)  
+   ![image](https://github.com/user-attachments/assets/8cc1858b-0978-4416-b86f-c75a9d63896b)  
 1. Click the **Settings** tab, and then click **Webhooks**.
 
-   ![Figure 89](images/img89.png)  
+   ![image](https://github.com/user-attachments/assets/512d5993-3e50-4913-8248-828c8f332bc1) 
 1. Click **Add webhook**.
 
-   ![Figure 90](images/img90.png)  
+   ![image](https://github.com/user-attachments/assets/1b809e40-e735-42b6-b822-6595dfb89266)  
 1. On the Add webhook page, enter the necessary data in the following fields:
 
    **Note**: GitHub might prompt you to authenticate one more time. if so, log in with your GitHub credentials.
@@ -541,12 +540,12 @@ GitHub webhooks allow external services to be notified when certain GitHub event
 
     You can retain the default values for the remaining fields, and then click **Add webhook**.
 
-    ![Figure 91](images/img91.png)
-    ![Figure 92](images/img92.png)
+    ![image](https://github.com/user-attachments/assets/a64ddf86-cc83-49c8-b1f3-e58b6b339c09)
+    ![image](https://github.com/user-attachments/assets/1ddc1e24-b80d-4131-99af-912f205ec069)
 
 1. A new webhook will be created (the last entry in case you have multiple webhooks). It will  have a tick-mark beside it (you may have to refresh the webhooks page in case you don’t see it automatically), which indicates that GitHub is able to ping or connect to your OpenShift cluster using the event listener HTTP or HTTPS (as applicable for your cluster) route URL.
 
-    ![Figure 93](images/img93.png)
+    ![image](https://github.com/user-attachments/assets/a365e97e-225e-4fe5-9a08-53d0fe760829)
 
 **Congratulations!** GitHub webhook is now connected with your OpenShift cluster and any changes to the GitHub source code will trigger a newPipelineRun job.
 
@@ -558,34 +557,34 @@ Let’s make a small code change in our GitHub repo and check if it indeed creat
 
 1. Navigate to your GitHub source repo, click **app.py**, and edit it by clicking the pencil icon.
 
-    ![Figure 94](images/img94.png)  
+    ![image](https://github.com/user-attachments/assets/63a8c3e0-4ec3-443e-ab48-5604b70193f9)  
 1. In the edit mode, make the following two changes:
 
    * Modify  the welcome message by adding **Pipelines** to make it ‘Pyflask Pipelines Demo’.
    * Upgrade the version to 2.0.
-    ![Figure 95](images/img95.png)
+    ![image](https://github.com/user-attachments/assets/3d343e1a-bff7-4bf6-8cf5-275edbb390d6)
 
 1. Scroll down to add a brief description for the changes made and click **Commit Changes**.
 
-    ![Figure 96](images/img96.png)  
+    ![image](https://github.com/user-attachments/assets/3b77d26c-14b1-4afe-a4fa-c28081fc09e0)
 1. When committed successfully, a new PipelinRun job is triggered. Navigate to your OpenShift console, click **Pipeline**, and then click your pipeline. In the Pipeline details view, click the **PipelineRuns** tab.
 
-    ![Figure 97](images/img97.png)  
+    ![image](https://github.com/user-attachments/assets/592abc3b-713f-421f-9b6d-978c9d2b24f0)  
 1. Notice that a new PipelineRun job is running.
 
-    ![Figure 98](images/img98.png)  
+    ![image](https://github.com/user-attachments/assets/c772b007-3f6c-4f51-a91d-05785261eb91) 
 1. Wait for the PipelineRun job to finish.
 
    **Note**: While it is running, you may want to click the new PipelineRun job and view the logs to monitor the git-clone and s2i-python tasks that run as part of this new job (as we did before).
 
-    ![Figure 99](images/img99.png)  
+    ![image](https://github.com/user-attachments/assets/0682f323-6b19-4ec8-8e97-4df9394f7dae)  
 1. Switch to quay.io in your browser and verify that a new Docker image is pushed to the registry.
 
    **Note**: If you already have the quay.io registry page opened, refresh the page to see the latest information.
 
    Notice that a new image is just pushed!
 
-    ![Figure 100](images/img100.png)
+    ![image](https://github.com/user-attachments/assets/0a20db64-ef7d-4970-a164-0e693828741f)
 
 **Congratulations!** You have successfully used GitHub webhook and the pipelines trigger functionality to auto build and deploy a new Docker image in the event of a GitHub source code change.
 
@@ -597,11 +596,11 @@ Perform the steps mentioned in the [Validate the Docker image created in quay.io
 
 The new welcome message:
 
-![Figure 101](images/img101.png)
+![image](https://github.com/user-attachments/assets/de729944-db82-42d7-8c3b-29cdf1773f8a)
 
 The new version of the application:
 
-![Figure 102](images/img102.png)
+![image](https://github.com/user-attachments/assets/4feb7c4e-0bad-4493-a2b5-a70f82a33fa6)
 
 **Congratulations!** This verifies that the new Docker image built from an automated PipelineRun job triggered by the GitHub source code change reflects the updates!
 
