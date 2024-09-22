@@ -85,15 +85,15 @@ It will take you around 30 minutes to complete this tutorial.
 
     You see that `ResourceQuota` was created with 2 pods in the project:
 
-    
+    ![image](https://github.com/user-attachments/assets/f8088868-a370-4e5b-803a-b2a3111dbc46)
 
 1. You can also view the resource quota on the web console from the Administrator Perspective. From the web console navigation menu, click <b>Administration &#8594; Resource Quotas</b>. You see the Resource Quotas page, with the pod-demo listed, as shown in the following image:
 
-    ![resourcequota webconsole](images/105811063-791be780-5fc5-11eb-8aa5-7950c7dc3b4a.JPG)
+    ![image](https://github.com/user-attachments/assets/a419a8b4-f439-4ced-aa00-caa2295b4aac)
 
 1. Click **pod-demo** to view the details of the resource quota. If you scroll down to the Resource Quota Details section for the pods resource type, you can view the used and maximum resources. Because you haven't deployed any pods yet, it shows that 0 pods have been used.
 
-    ![quota details](images/105811625-5b02b700-5fc6-11eb-8a95-06414df4b7d1.JPG)
+    ![image](https://github.com/user-attachments/assets/647b681d-be8f-4d4b-8146-2df04ff3f0cb)
 
 ## Verify that the pod quota works
 
@@ -107,23 +107,23 @@ It will take you around 30 minutes to complete this tutorial.
 
 1. Enter `oc get pods`, and the status shows that the pod is in running state:
 
-    ![image](images/106388021-06ac6c80-63f6-11eb-9565-558f020633e2.png)
+    ![image](https://github.com/user-attachments/assets/af625459-573c-459f-bb33-1293c46c5398)
 
 1. On the Resource Quota Details section on the web console, you can see that the number of used pods is now 1, as expected. This shows that the `ResourceQuota` has correctly counted the pod against the specified quota.
 
-    ![image](images/106388036-14fa8880-63f6-11eb-8c56-2411c358184d.png)
+    ![image](https://github.com/user-attachments/assets/787f044f-25c2-4b9d-bc0f-f180bf6a1a5f)
 
 1. You can scale the application from both the web console and the command line. In this step, you use the web console to scale the application to 2 replicas. From the navigation menu, click **Workloads &#8594; Deployments**, and then click the `myguestbook` deployment:
 
-    ![deployments](images/106388296-458ef200-63f7-11eb-8d7b-e0b354d7c2f0.JPG)
+    ![image](https://github.com/user-attachments/assets/b451d62a-2ce5-4b58-b062-ccc6e98d5f67)
 
 1. On the Deployment Details page, you can click the upper arrow to increase the number of replicas and the down arrow to decrease the number of replicas. Clck the upper arrow to increase the number of replicas to 2:
 
-    ![scale pods](images/106388343-7bcc7180-63f7-11eb-9372-2c11b8ac2081.JPG)
+    ![image](https://github.com/user-attachments/assets/2d2081ac-a2f1-4f40-80ee-68c25735ad9b)
 
 1. From the navigation menu, click **Administration &#8594; Resource Quotas**, and then click **pod-demo**. You can see that the number of used pods has increased to 2:
 
-    ![image](images/106388411-d534a080-63f7-11eb-813f-515a2266fc20.png)
+    ![image](https://github.com/user-attachments/assets/62925917-01cd-47e0-aa35-0a441efe76f8)
 
 1. From the command line, let's try exceeding the quota by adding another pod:
 
@@ -135,19 +135,19 @@ It will take you around 30 minutes to complete this tutorial.
 
 1. Enter `oc get pods`, and you see that there are only 2 pods running, even though you created a total of 3 pods:
 
-    ![image](images/106388687-2beeaa00-63f9-11eb-8518-0b487b8efde6.png)
+    ![image](https://github.com/user-attachments/assets/a2392951-940d-4338-9d87-f67f9345ed94)
 
 1. Go back to the web console and click **Workloads &#8594; Deployments**. You see the status of the myguestbook2 deployment shows 0 of 1 pods:
 
-    ![deployments 2](images/106388766-6ce6be80-63f9-11eb-9fc8-2ce9cb4a15d2.JPG)
+    ![image](https://github.com/user-attachments/assets/37640b76-2799-485a-bdcb-2b60de36e594)
 
 1. Click the **myguestbook2** deployment to view more details. You can see that the pod hasn't been deployed.
 
-    ![image](images/106388869-db2b8100-63f9-11eb-82a4-b1a54011c9d9.png)
+    ![image](https://github.com/user-attachments/assets/2931c5ee-7898-4492-8b4c-827c7b7f5706)
 
 1. Scroll to the Conditions section, which shows that the pod has failed with a message that the quota has been exceeded.
 
-    ![failed pod](images/106388947-2ba2de80-63fa-11eb-9b77-1c6db42271eb.JPG)
+    ![image](https://github.com/user-attachments/assets/593e9eb1-8a62-4238-913b-12b71f00ae0e)
 
 1. To prepare for the next step, let's delete all of the resources and the resource quota you created. From the command line, enter the following commands to delete all resources for the 'myguestbook' and 'myguestbookv2' deployments:
 
@@ -158,7 +158,7 @@ It will take you around 30 minutes to complete this tutorial.
 
     You see messages that the pods and deployments have been deleted:
 
-    ![delete all](images/106389819-d9b08780-63fe-11eb-87a0-90d5df2ecbbb.JPG)
+    ![image](https://github.com/user-attachments/assets/bfef5091-39d1-4829-abd7-4124216b558b)
 
 ## Configure memory and CPU for a namespace
 
@@ -187,7 +187,7 @@ It will take you around 30 minutes to complete this tutorial.
 
 1. When defining the quota for memory and CPU, you are defining minimum (requests) and maximum (limits) resources to be used. Once created, you can view the resource quota on the web console. Click **Administration &#8594; Resource Quotas**, and then click **mem-cpu-demo**. You can see that the resources haven't been used yet:
 
-    ![image](images/106389845-095f8f80-63ff-11eb-93d6-325469edbfca.png)
+    ![image](https://github.com/user-attachments/assets/15c09e92-0703-467c-b465-c17215c955b9)
 
 This `ResourceQuota` places the following requirements on the `quota-demo` namespace:
 
@@ -229,11 +229,11 @@ This `ResourceQuota` places the following requirements on the `quota-demo` names
 
 1. Because the requests and limits for the CPU and memory are within the quota, the pod should be created successfully. Enter `oc get pods` to see that nginx-app is running:
 
-    ![image](images/106390264-ee8e1a80-6400-11eb-8311-a4a7dacf5e3c.png)
+    ![image](https://github.com/user-attachments/assets/7c526753-4473-49e0-94a6-429c7635f93b)
 
 1. On the web console, look at the Resource Quota Details section to see that the Nginx pod’s CPU and memory requests and limits are correctly accounted for against the `ResourceQuota`:
 
-    ![image](images/106390279-082f6200-6401-11eb-83cc-33496b634321.png)
+    ![image](https://github.com/user-attachments/assets/93fa476a-e895-4875-a1ae-a6eeacadc022)
 
 Now, let's try to exceed the quota by creating a new application using the `redis docker` image. The yaml definition includes the following details. Keep in mind that it will exceed the quota, therefore the application won't be created.
 
@@ -263,7 +263,7 @@ spec:
 
     You receive the following error, because the application exceeded the quota:
 
-    ![image](images/106390512-3b262580-6402-11eb-90bc-2617cda77f37.png)
+    ![image](https://github.com/user-attachments/assets/2174852c-86ab-4987-b4f9-dc8b275ac085)
 
 1. You can increase the resource quota to fit in the new application. From the web console, click **YAML** on the mem-cpu-demo Resource Quota Details page. Copy and paste the following lines of code between lines 65 and  71 and then click **Save**:
 
@@ -277,7 +277,7 @@ spec:
     ```
     The following image shows the updated lines of code in the web console:
 
-    ![image](images/106390761-5fcecd00-6403-11eb-8521-105abff0aeb2.png)
+    ![image](https://github.com/user-attachments/assets/2c25f696-9ecf-4545-a4c9-2694271f71ac)
 
 1. Enter the following in the CLI to attempt to create the same redis application again.
 
@@ -289,11 +289,11 @@ spec:
 
 1. Enter `oc get pods`, and you see that the new application is running successfully.
 
-    ![image](images/106390869-ebe0f480-6403-11eb-9621-82f169bea672.png)
+    ![image](https://github.com/user-attachments/assets/f50a62ca-4507-49b3-86ab-7bbd0e37655f)
 
 1. Go back to the mem-cpu-demo Details tab, and you see that it has changed and now the consumed resources are counted for both applications:
 
-    ![image](images/106390818-b76d3880-6403-11eb-9bf8-db3d9d7af3bd.png)
+    ![image](https://github.com/user-attachments/assets/2fe9bf44-e0ae-4fde-a957-6b213be44aea)
 
 ## Summary
 
