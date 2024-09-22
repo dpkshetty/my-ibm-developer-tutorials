@@ -434,8 +434,8 @@ Before we dig deep into understanding the pipeline YAML file, let’s customize 
      * This is used as the tag for the Docker image being created as part of the container-build stage of the pipeline. You can give any tag of your choice . As you will learn further in the tutorial, the repository name (**demos** in my case) and the tag (**gitlab-pyflask** in my case) is used to create the architecture-specific Docker image (**demos:gitlab-pyflask-x86** and **demos:gitlab-pyflask-ppc64le** in my case) stored in the Quay.io repository.
    * **APP: dpk-pyflask**
      * This is the name of the OpenShift deployment resource/object. You can pick any name of your choice . This gets used as the prefix for all the OpenShift deployments and its associated resources that gets created during the pipeline execution job.
-
-   
+       
+      ![image](https://github.com/user-attachments/assets/4de4fc8f-3002-44da-b785-5741a50fda7f)   
 
 Congratulations! You have successfully customized the GitLab CI pipeline YAML file to suit to your environment.
 
@@ -452,7 +452,7 @@ The **.gitlab-ci.yml** file has 5 sections. To get an understanding of how the p
    * **container-build**, which builds the Docker image and pushes it to the Quay.io repository.
    * **multiarch-push**, which creates the multi-arch image and pushes it to the Quay.io repository.
 
-     ![Figure 37](images/fig37.png)
+     ![image](https://github.com/user-attachments/assets/c55808fa-fec6-4fb8-9301-1973f584aaba)
 
 1. Section 2: **variables**
 
@@ -462,7 +462,7 @@ The **.gitlab-ci.yml** file has 5 sections. To get an understanding of how the p
    * **TAG** – image tag to use for the Docker images.
    * **APP** – Prefix used to name all the OpenShift objects/resources created as part of pipeline job.
 
-     ![Figure 38](images/fig38.png)
+     ![image](https://github.com/user-attachments/assets/0641994b-cb1d-4f88-a7c2-d49a9d0bd857)
 
 1. Section 3: **ppc64le-build**
 
@@ -482,17 +482,13 @@ The **.gitlab-ci.yml** file has 5 sections. To get an understanding of how the p
 
      Learn more about the <a href="https://docs.podman.io/en/latest/markdown/podman-build.1.html" target="_blank" rel="noopener noreferrer">podman build</a> and <a href="https://docs.podman.io/en/latest/markdown/podman-push.1.html" target="_blank" rel="noopener noreferrer">podman push</a> commands.
 
-     ![Figure 39](images/fig39.png)
-
-     <a href="images/fig39.png" target="_blank" rel="noopener noreferrer">View larger image</a>
+     ![image](https://github.com/user-attachments/assets/f5867c59-b982-46a5-9fb6-a1aa616d3bf9)
 
 2. Section 4: **x86-build**
 
    This section builds the container image (aka Docker image) for the x86 (Intel) architecture. This section also has four components as described above. The only difference being, this will use the x86 OpenShift cluster (hence the **x86** tag used) and create an x86 Docker image, hence the suffix **-x86** is added to the image tag (also highlighted in the picture below).
 
-     ![Figure 40](images/fig40.png)
-
-     <a href="images/fig40.png" target="_blank" rel="noopener noreferrer">View larger image</a>
+     ![image](https://github.com/user-attachments/assets/65e75709-b1e1-4747-add4-78edce2accc9)
 
 3. Section 5: **multiarch-manifest**
 
@@ -514,9 +510,7 @@ The **.gitlab-ci.yml** file has 5 sections. To get an understanding of how the p
 
      Learn more about the <a href="https://docs.podman.io/en/latest/markdown/podman-build.1.html" target="_blank" rel="noopener noreferrer">podman utility</a> & the <a href="https://docs.podman.io/en/latest/markdown/podman-manifest.1.html" target="_blank" rel="noopener noreferrer">podman manifest</a> command.
 
-     ![Figure 41](images/fig41.png)
-
-     <a href="images/fig41.png" target="_blank" rel="noopener noreferrer">View larger image</a>
+     ![image](https://github.com/user-attachments/assets/d6a51753-d7d5-4d19-b6d2-12437996bc37)
 
 Congratulations! You now have a basic understanding of how the GitLab CI pipeline works. Let’s execute this pipeline and see how it works!
 
@@ -526,67 +520,49 @@ Congratulations! You now have a basic understanding of how the GitLab CI pipelin
 
 1. *Prerequisite*: The steps above covered how to setup the GitLab Runner instance for ppc64le architecture cluster and connect it to the GitLab server. Note: Ensure that the same steps have been followed to setup an x86 architecture cluster as well. Do not proceed to the next step unless you have successfully registered both ppc64le and x86 runners with the GitLab server and they are seen under the **Specific runners** section, as shown in your GitLab’s **Settings** -> **CI/CD** -> **Runners**.
 
-     ![Figure 42](images/fig42.png)
-
-     <a href="images/fig42.png" target="_blank" rel="noopener noreferrer">View larger image</a>
-
-     ![Figure 43](images/fig43.png)
-
-     <a href="images/fig43.png" target="_blank" rel="noopener noreferrer">View larger image</a>
+     ![image](https://github.com/user-attachments/assets/91dd18b9-43fa-4123-ae84-301cd8ae77cd)
+     
+     ![image](https://github.com/user-attachments/assets/f057abca-ebc4-4eb3-840a-853fcf51a14b)
 
 1. Now that x86 and ppc64le runners are successfully registered with GitLab server, lets kick off a pipeline run! You can kick off a pipeline run manually or automatically (by changing some code in the repository). To keep things simple, lets kick off a manual run. Click **CI/CD** -> **Pipelines** and click **Run pipeline**.
 
-     ![Figure 44](images/fig44.png)
+     ![image](https://github.com/user-attachments/assets/34ac84b2-eefe-4bbe-a25b-f3d9aef7ef5a)
 
-     ![Figure 45](images/fig45.png)
-
-     <a href="images/fig45.png" target="_blank" rel="noopener noreferrer">View larger image</a>
+     ![image](https://github.com/user-attachments/assets/f90354dd-e42e-42aa-a319-1f6092231246)
 
 1. In the resulting **Run pipeline** page, click **Run pipeline**.
 
-     ![Figure 46](images/fig46.png)
+     ![image](https://github.com/user-attachments/assets/f052aa33-7a12-4845-9cb0-85d0a2bec6f8)
 
 1. You will be taken to the **Pipelines** page, where you should see the graphical representation of the pipeline being executed. It will show two (parallel) jobs under the **container-build** step, one each for the ppc64le and x86 case, and one job under **multiarch-push** step for creating the multi-arch Docker image, which is in line with the **.gitlab-ci.yml** file (refer Step 7).
 
-     ![Figure 47](images/fig47.png)
+     ![image](https://github.com/user-attachments/assets/458d0a26-0286-479e-8079-aa2893c1909a)
 
 1. You can click on each of the jobs (ppc64le and x86 builds) and witness the execution of the CI job for each architecture. The CI job will build the Docker image for that architecture and push it to the Quay.io registry. Wait for both the architecture-specific jobs to complete.
 
    Here is what a CI job execution looks like:
 
-     ![Figure 48](images/fig48.png)
+     ![image](https://github.com/user-attachments/assets/3efbb120-2bda-498d-8458-cfbeeb7aab2f)
 
-     <a href="images/fig48.png" target="_blank" rel="noopener noreferrer">View larger image</a>
+     ![image](https://github.com/user-attachments/assets/e0e49a4e-bbba-44a2-8e4c-89ca978b7ac9)
 
-     ![Figure 49](images/fig49.png)
+     ![image](https://github.com/user-attachments/assets/ee03039a-8d45-4d98-9133-ed59df7dbef3)
 
-     <a href="images/fig49.png" target="_blank" rel="noopener noreferrer">View larger image</a>
-
-     ![Figure 50](images/fig50.png)
-
-     <a href="images/fig50.png" target="_blank" rel="noopener noreferrer">View larger image</a>
-
-     ![Figure 51](images/fig51.png)
-
-     <a href="images/fig51.png" target="_blank" rel="noopener noreferrer">View larger image</a>
+     ![image](https://github.com/user-attachments/assets/59e0dd88-3354-4f39-9b03-90510e2bf12f)
 
 1. Once both the jobs under **container-build** is complete, it will then execute the job under **multiarch-push**, which will combine the architecture specific Docker images into a multi-arch Docker image and push that to the Quay.io registry.
 
    This is what the multi-arch job looks like:
 
-     ![Figure 52](images/fig52.png)
-
-     <a href="images/fig52.png" target="_blank" rel="noopener noreferrer">View larger image</a>
+     ![image](https://github.com/user-attachments/assets/98daaf6b-fea0-4237-b34d-44c393cde799)
 
 1. Wait for all the pipeline jobs to complete successfully. Under **CI/CD**, click **Pipelines** and then click on the topmost pipeline that corresponds to the most recent pipeline run.
 
-     ![Figure 53](images/fig53.png)
-
-     <a href="images/fig53.png" target="_blank" rel="noopener noreferrer">View larger image</a>
+     ![image](https://github.com/user-attachments/assets/1c4b3648-a0ed-4a52-9311-cf88b71ef760)
 
 1. Once all the jobs are complete, the pipeline should look as shown. This signifies that your Gitlab CI pipeline executed all jobs successfully!
 
-     ![Figure 54](images/fig54.png)
+     ![image](https://github.com/user-attachments/assets/0d7b8f6b-1fa3-41fd-9e82-6e2bbf819168)
 
 Congratulations! You have successfully executed your GitLab CI pipeline, thus creating a multi-arch Docker image and pushed it to the Quay.io registry.
 
@@ -598,7 +574,7 @@ Congratulations! You have successfully executed your GitLab CI pipeline, thus cr
 
    Click on the **Tags** icon and you should be able to see three new Docker images created in the recent past, listed on the top of the page. These three Docker images correspond to the x86 architecure, ppc64le architecture and the multi-arch Docker images created by the successful execution of your GitLab CI pipeline.
 
-     ![Figure 55](images/fig55.png)
+     ![image](https://github.com/user-attachments/assets/a137907e-9d78-4169-97c1-8ffb62058c04)
 
 Congratulations! If you see the above in *your* Quay.io repository, you have successfully managed the integration of GitLab with Quay.io and created the architecture-specific and multi-arch Docker images. Now let’s go ahead and validate that the multi-arch Docker image works as expected.
 
@@ -620,21 +596,21 @@ Congratulations! If you see the above in *your* Quay.io repository, you have suc
 
    On the x86 cluster, I was able to spin up the application successfully using the multi-arch Docker image.
 
-     ![Figure 56](images/fig56.png)
+     ![image](https://github.com/user-attachments/assets/d59da8fd-3bdd-45a6-9c43-ed9f2a7e0a96)
 
    Similarly, on the ppc64le cluster too, I was able to spin up the application successfully using the multi-arch Docker image.
 
-     ![Figure 57](images/fig57.png)
+     ![image](https://github.com/user-attachments/assets/060660f8-21a9-449a-8815-c1a973fb0b35)
 
 1. Clicking on the URL under **Routes** in each cluster, displays my application console. It proves that the multi-arch Docker image indeed works as expected! The same image automatically serves the right Docker image based on the hardware architecture of the OpenShift cluster in which the image is being deployed!
 
    On the x86 cluster:
 
-     ![Figure 58](images/fig58.png)
+     ![image](https://github.com/user-attachments/assets/4b58ccc2-c561-47c3-8f3a-04b66ec2c55b)
 
    On the ppc64le cluster:
 
-     ![Figure 59](images/fig59.png)
+     ![image](https://github.com/user-attachments/assets/65004375-a2c8-4e2f-be41-3d88977c9beb)
 
 Congratulations! You have successfully deployed applications on x86 and ppc64le OpenShift clusters using a multi-arch Docker image.
 
